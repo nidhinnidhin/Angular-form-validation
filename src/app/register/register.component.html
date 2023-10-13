@@ -1,0 +1,167 @@
+<div class="container">
+  <div class="wrapper-container">
+    <div class="wrapper-form-table">
+    <div class="wrapper">
+      <h5>Register</h5>
+      <form [formGroup]="userForm">
+        <div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="name"
+            formControlName="name"
+            aria-label="Example text with two button addons"
+          />
+          <div
+            class="error-msg"
+            *ngIf="!userForm.controls['name'].valid && userFormSubmitted"
+          >
+            Please enter user name
+          </div>
+        </div>
+        <div>
+          <input
+            type="email"
+            class="form-control mt-2"
+            placeholder="name@gmail.com"
+            formControlName="email"
+            aria-label="Example text with two button addons"
+          />
+          <div
+            class="error-msg"
+            *ngIf="!userForm.controls['email'].valid && userFormSubmitted"
+          >
+            Please enter valid email
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="mobile"
+            formControlName="mobile"
+            aria-label="Example text with two button addons"
+          />
+          <div
+            class="error-msg"
+            *ngIf="!userForm.controls['mobile'].valid && userFormSubmitted"
+          >
+            Please enter valid mobile number
+          </div>
+        </div>
+        <div>
+          <select
+            class="form-select mt-2"
+            aria-label="Default select example"
+            formControlName="gender"
+            [(ngModel)]="selectedValue"
+          >
+            <option value="male">male</option>
+            <option value="female">female</option>
+          </select>
+          <div
+            class="error-msg"
+            *ngIf="!userForm.controls['gender'].valid && userFormSubmitted"
+          >
+            Please select Gender
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="address"
+            formControlName="address"
+            aria-label="Example text with two button addons"
+            *ngIf="userForm.value.gender === 'male'"
+          />
+        </div>
+        <div class="dob">
+          <div>
+            <input
+              placeholder="D-O-B"
+              type="date"
+              class="date-of-birth"
+              id="start"
+              name="trip-start"
+              formControlName="date"
+              value="18/12/2002"
+              min="1540-01-01"
+              max="2023-10-1"
+            />
+            <div
+              class="error-msg"
+              *ngIf="!userForm.controls['date'].valid && userFormSubmitted"
+            >
+              Please enter DOB
+            </div>
+            <div
+              class="error-msg"
+              *ngIf="
+                userForm.get('date')?.hasError('invalidAge') &&
+                userFormSubmitted
+              "
+            >
+              Age must be greater than or equal to 18.
+            </div>
+          </div>
+        </div>
+        <div class="btn">
+          <button class="btn btn-primary mt-2" type="button" (click)="Submit()">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Address</th>
+        <th scope="col">DOB</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let item of userList; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.mobile }}</td>
+        <td>{{ item.address }}</td>
+        <td>{{ item.date }}</td>
+        <td>{{ item.gender }}</td>
+        <td>
+          <button
+            type="button"
+            id="button-form"
+            class="btn btn-primary"
+            (click)="editUser(item, i)"
+          >
+            <span class="material-symbols-outlined"> edit </span>
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            id="button-fm"
+            class="btn btn-danger"
+            (click)="deleteUser(i)"
+          >
+            <span class="material-symbols-outlined"> delete </span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<router-outlet></router-outlet>

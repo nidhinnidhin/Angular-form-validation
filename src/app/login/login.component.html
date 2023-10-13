@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <form [formGroup]="userForm">
+    <h5 class="title">Login</h5>
+    <div class="mb-3">
+      <input
+        type="email"
+        placeholder="email"
+        class="form-control"
+        formControlName="email"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+      <div
+        class="error-msg"
+        *ngIf="!userForm.controls['email'].valid && userFormSubmitted"
+      >
+        Please enter valid email
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        type="password"
+        placeholder="password"
+        formControlName="password"
+        class="form-control"
+        id="exampleInputPassword1"
+      />
+      <div
+        class="error-msg"
+        *ngIf="!userForm.controls['password'].valid && userFormSubmitted"
+      >
+        Please enter valid password
+      </div>
+      <div class="error-msg" *ngIf="userForm.get('password')?.hasError('pattern') && userFormSubmitted">
+        Password must be at least 8 characters long.
+      </div>
+      <div class="error-msg" *ngIf="userForm.get('password')?.hasError('pattern') && userFormSubmitted">
+        Password must contain at least one number.
+      </div>
+      <div class="error-msg" *ngIf="userForm.get('password')?.hasError('pattern') && userFormSubmitted">
+        Password must contain at least one uppercase letter.
+      </div>
+      <div class="error-msg" *ngIf="userForm.get('password')?.hasError('pattern') && userFormSubmitted">
+        Password must contain at least one special character.
+      </div>
+    </div>
+    <div class="btn-wrapper">
+      <button type="submit" class="btn btn-primary" (click)="Submit()">Login</button>
+    </div>
+  </form>
+</div>

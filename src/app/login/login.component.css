@@ -1,0 +1,19 @@
+.wrapper{
+    height: fit-content;
+    width: 100%;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 5px;
+}
+.btn-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.error-msg{
+    color: red;
+    margin: 0px 5px;
+}
+.title{
+    text-align: center;
+}

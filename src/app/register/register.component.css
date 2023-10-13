@@ -1,0 +1,51 @@
+.wrapper-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper-form-table{
+    display: flex;
+    width:100vw;
+    justify-content: space-around;
+
+}
+.wrapper{
+    background-color: #fff;
+    height: fit-content;
+    padding: 20px;
+    width: fit-content;
+    margin: 50px 30px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
+}
+
+.btn{
+    width: 100%;
+}
+.dob{
+    color: rgb(46, 45, 45);
+    margin: 8px 0px;
+}
+.date-of-birth{
+    height: 40px;
+    width: 100%;
+    color: rgb(85, 83, 83);
+    padding: 7px;
+    border: 1px solid rgb(198, 196, 196);
+    border-radius: 5px;
+}
+#button-fm{
+    height: 38px;   
+}
+#button-form{
+    height: 38px;   
+}
+
+.error-msg{
+    color: red;
+    margin: 0px 5px;
+}
